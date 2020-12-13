@@ -9,9 +9,6 @@ def is_occupied(value):
 #     #  
 
 
-
-
-
 def count_adjacent(input,i,j):
     i = i-1
     j = j -1
