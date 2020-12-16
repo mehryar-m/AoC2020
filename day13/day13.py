@@ -7,14 +7,12 @@ def soln1(earliest_arrival, list_of_buses):
 
 ## shit doesn't work...
 def soln2(input_part2):
-    start = 100000000000000 - 12
-    while (True):
-        yes = True
-        for input in input_part2[1:]:
-            yes = yes and ((start + input[0]) % input[1] == 0)
-        if yes:
-            return start
-        start += input_part2[0][1]
+    t, step = 0, 1
+    for mins, bus_id in input_part2:
+        while (t + mins) % bus_id != 0:
+            t += step
+        step *= bus_id
+    return t
 
 if __name__ == "__main__":
     input = [i.strip() for i in open("input.txt", "r").readlines()]
@@ -23,6 +21,5 @@ if __name__ == "__main__":
     list_of_times = input[1].split(",")
     sol2_input = [(i, int(list_of_times[i])) for i in range(0, len(list_of_times)) if list_of_times[i] != 'x']
     print(sol2_input)
-
     print(soln2(sol2_input))
     print(soln1(earliest_arrival, list_of_buses))
