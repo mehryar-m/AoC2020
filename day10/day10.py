@@ -25,7 +25,6 @@ if __name__ == "__main__":
     print(soln1(input + [max(input) + 3]))
     last = max(input)
     index = [1] + [0] * last + [0, 0]
-    print(index)
     for r in sorted(input):
         index[r] = index[r-1] + index[r-2] + index[r-3]
         if r == last:
